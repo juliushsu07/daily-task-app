@@ -1,4 +1,5 @@
-import { React, useEffect, useState } from 'react'
+import { Component, React, useEffect, useState } from 'react'
+import TaskDetails from '../components/TaskDetails'
 
 function Home() {
   const [tasks, setTasks] = useState(null)
@@ -21,7 +22,7 @@ function Home() {
     <div className="home">
       <div className = "tasks">
         {tasks && tasks.map(task => (
-            <p key={task._id}>{task.title}</p>
+            <TaskDetails key={task._id} task={task}/>
         ))}
       </div>
     </div>
