@@ -1,28 +1,19 @@
 const express = require('express')
-const Task = require('../models/taskModel')
+const {
+    getTasks,
+    getTask,
+    createTask
+} = require('../controllers/taskController') 
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET all tasks'})
-})
+router.get('/', getTasks)
 
 // GET a single task
-router.get('/:id', (req,res) => {
-    res.json({mssg: 'GET a single task'})
-})
+router.get('/:id', getTask)
 
 // POST a new task
-router.post('/', async (req, res) => {
-    const {title} = req.body
-    
-    try {
-        const task = await Task.create({title})
-        res.status(200).json(task)
-    } catch(error) {
-        res.status(400).json({error : error.message})
-    }
-})
+router.post('/', createTask)
 
 // DELETE a new task
 router.delete('/:id', (req, res) => {
