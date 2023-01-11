@@ -39,7 +39,6 @@ const TaskForm = () => {
   return (
     <form className="create" onSubmit={handleSubmit}>
         <h3>Add a New Task</h3>
-        <label>TO-DO: </label>
         <input 
             type="text"
             onChange={(e) => setTitle(e.target.value)}

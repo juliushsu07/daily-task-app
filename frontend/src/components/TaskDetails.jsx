@@ -1,6 +1,9 @@
 import React from 'react'
 import { useTaskContext } from '../hooks/useTaskContext'
 
+// date fns
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 const TaskDetails = ({ task }) => {
   const { dispatch } = useTaskContext()
 
@@ -18,7 +21,7 @@ const TaskDetails = ({ task }) => {
   return (
     <div className="task-details">
       <h4>{task.title}</h4>
-      <p>{task.createdAt}</p>
+      <p>{formatDistanceToNow(new Date(task.createdAt), { addSuffix: true })}</p>
       <span onClick={handleClick}>Done!</span>
     </div>
   )
