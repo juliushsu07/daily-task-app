@@ -10,7 +10,7 @@ export const taskReducer = (state, action) => {
             }
         case 'CREATE_TASK':
             return {
-                task: [action.payload, ...state.tasks]
+                tasks: [action.payload, ...state.tasks]
             }
         default: 
         return state
