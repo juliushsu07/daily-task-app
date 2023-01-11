@@ -1,15 +1,16 @@
 import { Component, React, useEffect, useState } from 'react'
 import TaskDetails from '../components/TaskDetails'
+import TaskForm from '../components/TaskForm'
 
 function Home() {
   const [tasks, setTasks] = useState(null)
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const res = await fetch('/api/tasks')
-      const json = await res.json()
+      const response = await fetch('/api/tasks')
+      const json = await response.json()
 
-      if(res.ok) {
+      if(response.ok) {
         setTasks(json)
       }
     }
@@ -23,8 +24,10 @@ function Home() {
       <div className = "tasks">
         {tasks && tasks.map(task => (
             <TaskDetails key={task._id} task={task}/>
+            
         ))}
       </div>
+      <TaskForm />
     </div>
   )
 }
