@@ -1,11 +1,12 @@
-import {React, useEffect, useState } from 'react'
+import { React, useEffect} from 'react'
+import { useTaskContext } from "../hooks/useTaskContext"
 
 // components
 import TaskDetails from '../components/TaskDetails'
 import TaskForm from '../components/TaskForm'
 
 const Home = () => {
-  const [tasks, setTasks] = useState(null)
+  const {tasks, dispatch} = useTaskContext()
 
   useEffect(() => {
     const fetchWorkouts = async () => {
@@ -13,7 +14,7 @@ const Home = () => {
       const json = await response.json()
 
       if(response.ok) {
-        setTasks(json)
+        dispatch({type: 'SET_TASKS', payload: json})
       }
     }
 
@@ -25,7 +26,6 @@ const Home = () => {
       <div className = "tasks">
         {tasks && tasks.map(task => (
             <TaskDetails key={task._id} task={task}/>
-            
         ))}
       </div>
       <TaskForm />
