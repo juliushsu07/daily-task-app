@@ -1,8 +1,10 @@
 import {React, useEffect, useState } from 'react'
+
+// components
 import TaskDetails from '../components/TaskDetails'
 import TaskForm from '../components/TaskForm'
 
-export const Home = () => {
+const Home = () => {
   const [tasks, setTasks] = useState(null)
 
   useEffect(() => {
@@ -30,3 +32,5 @@ export const Home = () => {
     </div>
   )
 }
+
+export default Home

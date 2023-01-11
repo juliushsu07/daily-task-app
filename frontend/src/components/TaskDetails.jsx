@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TaskDetails = () => {
+const TaskDetails = ({task}) => {
   return (
     <div className="task-details">
       <h4>{task.title}</h4>
@@ -8,3 +8,5 @@ export const TaskDetails = () => {
     </div>
   )
 }
+
+export default TaskDetails

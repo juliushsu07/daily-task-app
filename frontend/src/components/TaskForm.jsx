@@ -1,6 +1,6 @@
 import {React, useState} from 'react'
 
-export const TaskForm = () => {
+const TaskForm = () => {
     const [title, setTitle] = useState('')
     const [error, setError] = useState(null)
 
@@ -43,3 +43,5 @@ export const TaskForm = () => {
     </form>
   )
 }
+
+export default TaskForm
