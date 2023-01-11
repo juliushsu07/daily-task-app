@@ -5,6 +5,7 @@ const TaskForm = () => {
     const { dispatch } = useTaskContext()
     const [title, setTitle] = useState('')
     const [error, setError] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -22,12 +23,15 @@ const TaskForm = () => {
         const json = await response.json()
 
         if (!response.ok) {
+            console.log(json.error)
+            console.log(json.emptyFields)
             setError(json.error)
-            console.log('error')
+            setEmptyFields(json.emptyFields)
         }
         if(response.ok) {
             setTitle('')
             setError(null)
+            setEmptyFields([])
             console.log('New task added', json)
             dispatch({type: 'CREATE_TASK', payload: json})
         }
@@ -40,9 +44,10 @@ const TaskForm = () => {
             type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
+            className={emptyFields.includes('title') ? 'error' : ''}
         />
         <button>Add Task</button>
-        {error && <div className = "error">Please enter the task you need to do, sir!</div>}
+        {error && <div className = "error">{error}!</div>}
     </form>
   )
 }

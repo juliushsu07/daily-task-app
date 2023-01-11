@@ -32,6 +32,15 @@ const getTask = async ( req, res ) => {
 const createTask = async (req, res) => {
     const {title} = req.body
 
+    let emptyFields = []
+
+    if(!title) {
+        emptyFields.push('title')
+    }
+    if(emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please let me know what the task is, sir Julius!', emptyFields })
+    }
+
     // add doc to db
     try {
         const task = await Task.create({title})
@@ -41,7 +50,7 @@ const createTask = async (req, res) => {
     }
 }
 
-// Delete a task
+// DELETE a task
 const deleteTask = async (req, res) => {
     const { id } =req.params
 
@@ -58,7 +67,7 @@ const deleteTask = async (req, res) => {
     res.status(200).json(task)
 }
 
-// update a task
+// UPDATE a task
 const updateTask = async (req, res) => {
     const { id } = req.params
     console.log(id)
