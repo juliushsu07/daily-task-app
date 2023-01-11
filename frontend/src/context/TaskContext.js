@@ -23,7 +23,7 @@ export const TaskConetextProvider = ({ children }) => {
     })
 
     return (
-        <TaskContext.Provider value={{state, dispatch}}>
+        <TaskContext.Provider value={{...state, dispatch}}>
             { children }
         </TaskContext.Provider>
       )

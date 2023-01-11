@@ -7,4 +7,5 @@ export const useTaskContext = () => {
     if (!context) {
         throw Error('useWorkoutContext must be used inside an TaskContextProvider')
     }
+    return context
 }
