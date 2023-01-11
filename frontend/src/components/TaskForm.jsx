@@ -1,6 +1,6 @@
 import {React, useState} from 'react'
 
-function TaskForm() {
+export const TaskForm = () => {
     const [title, setTitle] = useState('')
     const [error, setError] = useState(null)
 
@@ -29,7 +29,6 @@ function TaskForm() {
             console.log('New task added')
         }
     }
-
   return (
     <form className="create" onSubmit={handleSubmit}>
         <h3>Add a New Task</h3>
@@ -44,5 +43,3 @@ function TaskForm() {
     </form>
   )
 }
-
-export default TaskForm

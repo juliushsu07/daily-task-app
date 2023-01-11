@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function NavBar() {
+export const NavBar = () => {
   return (
     <header>
       <div className='container'>
@@ -12,5 +12,3 @@ function NavBar() {
     </header>
   )
 }
-
-export default NavBar
