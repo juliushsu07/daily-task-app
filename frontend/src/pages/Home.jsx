@@ -5,12 +5,18 @@ import { useTaskContext } from "../hooks/useTaskContext"
 import TaskDetails from '../components/TaskDetails'
 import TaskForm from '../components/TaskForm'
 
+// a
+import axios from 'axios';
+
+axios.defaults.baseURL = process.env.REST_API_URL;
+
 const Home = () => {
   const {tasks, dispatch} = useTaskContext()
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch('/api/tasks')
+      console.log("fetch called!")
+      const response = await fetch('/tasks')
       const json = await response.json()
 
       if(response.ok) {

@@ -12,7 +12,7 @@ const TaskForm = () => {
 
         const task = {title}
 
-        const response = await fetch('/api/tasks', {
+        const response = await fetch('/tasks', {
             method: 'POST',
             body: JSON.stringify(task),
             headers: {

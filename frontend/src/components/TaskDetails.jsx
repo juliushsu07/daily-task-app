@@ -8,7 +8,7 @@ const TaskDetails = ({ task }) => {
   const { dispatch } = useTaskContext()
 
   const handleClick = async () => {
-    const response = await fetch('/api/tasks/' + task._id, {
+    const response = await fetch('/tasks/' + task._id, {
       method: 'DELETE'
     })
     const json = await response.json()
