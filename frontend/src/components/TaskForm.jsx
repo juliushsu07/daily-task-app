@@ -12,7 +12,7 @@ const TaskForm = () => {
 
         const task = {title}
 
-        const response = await fetch('/tasks', {
+        const response = await fetch('https://us-central1-todolistserver-4800d.cloudfunctions.net/api/tasks', {
             method: 'POST',
             body: JSON.stringify(task),
             headers: {
