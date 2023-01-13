@@ -8,7 +8,7 @@ const TaskDetails = ({ task }) => {
   const { dispatch } = useTaskContext()
 
   const handleClick = async () => {
-    const response = await fetch('/tasks/' + task._id, {
+    const response = await fetch('https://us-central1-todolistserver-4800d.cloudfunctions.net/api/tasks/' + task._id, {
       method: 'DELETE'
     })
     const json = await response.json()

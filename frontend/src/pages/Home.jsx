@@ -5,18 +5,13 @@ import { useTaskContext } from "../hooks/useTaskContext"
 import TaskDetails from '../components/TaskDetails'
 import TaskForm from '../components/TaskForm'
 
-// a
-import axios from 'axios';
-
-axios.defaults.baseURL = process.env.REST_API_URL;
-
 const Home = () => {
   const {tasks, dispatch} = useTaskContext()
 
   useEffect(() => {
     const fetchWorkouts = async () => {
       console.log("fetch called!")
-      const response = await fetch('/tasks')
+      const response = await fetch('https://us-central1-todolistserver-4800d.cloudfunctions.net/api/tasks')
       const json = await response.json()
 
       if(response.ok) {
